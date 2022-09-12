@@ -62,4 +62,21 @@ public class TagCommand extends Command {
         tagsToAddStringRepresentation = tagsToAddStringRepresentation.substring(1);
         return new CommandResult(String.format(MESSAGE_SUCCESS, tagsToAddStringRepresentation));
     }
+
+    @Override
+    public boolean equals(Object other) {
+        // short circuit if same object
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof TagCommand)) {
+            return false;
+        }
+
+        // state check
+        TagCommand e = (TagCommand) other;
+        return index.equals(e.index) && tagsToAdd.equals(e.tagsToAdd);
+    }
 }
