@@ -54,9 +54,12 @@ public class TagCommand extends Command {
         model.setPerson(personToTag, taggedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
 
-        String tagsToAddStringRepresentation = tagsToAdd.stream().<String>reduce(
-                "", (ts, t) -> ts + ", " + t.tagName, (x, y) -> x + y);
-        tagsToAddStringRepresentation = tagsToAddStringRepresentation.substring(1);  // Remove unneeded preceeding comma
+        String tagsToAddStringRepresentation = tagsToAdd.stream().reduce(
+                "",
+                (tagStrings, tag) -> tagStrings + ", " + tag.tagName,
+                (x, y) -> x + y);
+        // Remove unneeded preceding comma
+        tagsToAddStringRepresentation = tagsToAddStringRepresentation.substring(1);
         return new CommandResult(String.format(MESSAGE_SUCCESS, tagsToAddStringRepresentation));
     }
 }
