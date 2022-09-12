@@ -14,6 +14,9 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 import seedu.address.model.tag.Tag;
 
+/**
+ * Tags a user with one or more tags.
+ */
 public class TagCommand extends Command {
 
     public static final String COMMAND_WORD = "tag";
@@ -28,6 +31,10 @@ public class TagCommand extends Command {
     private final Index index;
     private final Set<Tag> tagsToAdd;
 
+    /**
+     * @param index of the person in the filtered person list to tag
+     * @param tagsToAdd to tag the person with
+     */
     public TagCommand(Index index, Set<Tag> tagsToAdd) {
         requireNonNull(index);
         requireNonNull(tagsToAdd);
@@ -55,9 +62,7 @@ public class TagCommand extends Command {
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
 
         String tagsToAddStringRepresentation = tagsToAdd.stream().reduce(
-                "",
-                (tagStrings, tag) -> tagStrings + ", " + tag.tagName,
-                (x, y) -> x + y);
+                "", (tagStrings, tag) -> tagStrings + ", " + tag.tagName, (x, y) -> x + y);
         // Remove unneeded preceding comma
         tagsToAddStringRepresentation = tagsToAddStringRepresentation.substring(1);
         return new CommandResult(String.format(MESSAGE_SUCCESS, tagsToAddStringRepresentation));
