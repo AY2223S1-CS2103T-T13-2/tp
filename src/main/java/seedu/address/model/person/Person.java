@@ -27,7 +27,7 @@ public class Person {
 
     /**
      * Default constructor for a Person if remark is not set.
-     * 
+     *
      * @param name
      * @param phone
      * @param email

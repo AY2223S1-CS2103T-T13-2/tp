@@ -4,12 +4,12 @@ package seedu.address.model.person;
  * Represents the remarks of a Person in the address book.
  */
 public class Remark {
-    public static String MESSAGE_CONSTRAINTS = "Remarks can take any values, and it can be blank";
+    public static final String MESSAGE_CONSTRAINTS = "Remarks can take any values, and it can be blank";
     public final String value;
 
     /**
      * Constructs a {@code Remark}.
-     * 
+     *
      * @param remark The remark.
      */
     public Remark(String remark) {

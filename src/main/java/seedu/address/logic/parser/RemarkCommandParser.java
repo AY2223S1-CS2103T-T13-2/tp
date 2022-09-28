@@ -14,6 +14,9 @@ import seedu.address.logic.parser.exceptions.ParseException;
 public class RemarkCommandParser implements Parser<RemarkCommand> {
     private static final String MESSAGE_INVALID_FORMAT = "Invalid format: %1$s";
 
+    /**
+     * Parses the given {@code String} of arguments in the context of the RemarkCommand
+     */
     public RemarkCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
